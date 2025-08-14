@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video Editor UI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="editor-root">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="btn btn-ghost">Menu ▾</button>
+        <div class="brand">VE</div>
+        <nav class="tool-icons">
+          <button class="icon-btn" title="Media">📁</button>
+          <button class="icon-btn" title="Audio">🎵</button>
+          <button class="icon-btn" title="Text">🔤</button>
+          <button class="icon-btn" title="Effects">✨</button>
+          <button class="icon-btn" title="Transitions">⇄</button>
+          <button class="icon-btn" title="Captions">💬</button>
+          <button class="icon-btn" title="Filters">🎚️</button>
+          <button class="icon-btn" title="Adjustment">⚙️</button>
+        </nav>
+      </div>
+      <div class="topbar-center">
+        <div class="project-title" contenteditable="true" spellcheck="false">Untitled Project</div>
+      </div>
+      <div class="topbar-right">
+        <button class="btn btn-ghost">Share</button>
+        <button class="btn btn-primary">Export</button>
+      </div>
+    </header>
+
+    <main class="main-grid" id="main-grid">
+      <aside class="sidebar-left">
+        <div class="panel-header">Media</div>
+        <div class="import-row">
+          <input type="file" id="file-input" multiple hidden />
+          <button id="import-btn" class="btn btn-secondary">Import</button>
+          <button class="btn btn-secondary ghost" disabled>Record</button>
+        </div>
+        <div class="media-sidebar">
+          <div class="section">
+            <div class="section-title">Yours</div>
+            <button class="section-item active">All media</button>
+            <button class="section-item">Spaces</button>
+            <button class="section-item">Library</button>
+          </div>
+        </div>
+        <div class="dropzone" id="dropzone">
+          <div class="cloud">☁️</div>
+          <div class="hint">Drag and drop videos, photos, and audio files here</div>
+        </div>
+      </aside>
+
+      <div class="resizer resizer-vertical" data-resize="left"></div>
+
+      <section class="player-panel">
+        <div class="panel-header">Player</div>
+        <div class="player-stage">
+          <div class="stage-center-msg">Drop media to preview</div>
+          <video id="preview-video" controls></video>
+          <button class="play-overlay" id="play-overlay">▶</button>
+        </div>
+        <div class="player-controls">
+          <div class="meta">00:00:00 / 00:00:00</div>
+          <div class="spacer"></div>
+          <button class="btn btn-ghost small">Fit</button>
+          <button class="btn btn-ghost small">100%</button>
+        </div>
+      </section>
+
+      <div class="resizer resizer-vertical" data-resize="right"></div>
+
+      <aside class="sidebar-right">
+        <div class="panel-header">Details</div>
+        <div class="details">
+          <div class="detail-row">
+            <div class="label">Name</div>
+            <div class="value" id="detail-name">Untitled Project</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Path</div>
+            <div class="value path">—</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Aspect ratio</div>
+            <div class="value">Original</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Resolution</div>
+            <div class="value">Adapted</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Frame rate</div>
+            <div class="value">30.00fps</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Imported media</div>
+            <div class="value">Stay in original location</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Proxy</div>
+            <div class="value">Turned off</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Arrange layers</div>
+            <div class="value">Turned on</div>
+          </div>
+        </div>
+        <div class="details-footer">
+          <button class="btn btn-secondary">Modify</button>
+        </div>
+      </aside>
+
+      <div class="resizer resizer-horizontal" data-resize="bottom"></div>
+
+      <section class="timeline" id="timeline">
+        <div class="timeline-toolbar">
+          <div class="toolbar-left">
+            <button class="icon-btn" title="Select">🖱️</button>
+            <button class="icon-btn" title="Cut">✂️</button>
+            <button class="icon-btn" title="Undo">↶</button>
+            <button class="icon-btn" title="Redo">↷</button>
+            <button class="icon-btn" title="Link">🔗</button>
+            <button class="icon-btn" title="Snapping">🧲</button>
+            <button class="icon-btn" title="Mute">🔇</button>
+          </div>
+          <div class="toolbar-right">
+            <button class="icon-btn" title="Zoom Out">➖</button>
+            <input type="range" min="1" max="200" value="100" class="zoom" />
+            <button class="icon-btn" title="Zoom In">➕</button>
+          </div>
+        </div>
+        <div class="timeline-body">
+          <div class="track-labels">
+            <div class="track-label">V1</div>
+            <div class="track-label">V2</div>
+            <div class="track-label">A1</div>
+            <div class="track-label">A2</div>
+          </div>
+          <div class="tracks">
+            <div class="track-row">
+              <div class="placeholder">Drag material here and start to create</div>
+            </div>
+            <div class="track-row"></div>
+            <div class="track-row"></div>
+            <div class="track-row"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
